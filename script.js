@@ -1,7 +1,21 @@
-function getComputerChoice() {
-  return Math.floor(Math.random() * 1);
 
+
+function getComputerChoice() {
+  let randomNum = Math.floor(Math.random() * 3);
+  if (randomNum === 0) {
+    return "rock";
+  } else if (randomNum === 1) {
+    return "paper";
+  } else {
+    return "scissors";
+  };
 }
+
+
+
+
+
 
 let humanScore = 0;
 let computerScore = 0;
+

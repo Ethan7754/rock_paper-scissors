@@ -26,6 +26,29 @@ function getHumanChoice() {
   };
 }
 
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice === "rock" && computerChoice === "paper") {
+    computerScore++;
+    return "You lose! Paper beats Rock!";
+  } else if (humanChoice === "paper" && computerChoice === "rock") {
+    humanScore++;
+    return "You win! Paper beats rock!";
+  } else if (humanChoice === "paper" && computerChoice === "scissors") {
+    computerScore++;
+    return "You lose! Scissors beats Paper!";
+  } else if (humanChoice === "scissors" && computerChoice === "paper") {
+    humanScore++;
+    return "You win! Scissors beats Paper!";
+  } else if (humanChoice === "scissors" && computerChoice === "rock") {
+    computerScore++;
+    return "You lose! Rock beats Scissors!";
+  } else if (humanChoice === "rock" && computerChoice === "scissors") {
+    humanScore++;
+    return "You win! ROck beats Scissors!";
+  } else {
+    return "Draw! No points awarded";
+  }
+}
 
 
 

@@ -11,6 +11,8 @@ function getComputerChoice() {
   };
 }
 
+getHumanChoice();
+
 function getHumanChoice() {
   let humanPick = window.prompt("What's your pick?");
   if (humanPick.toLowerCase() === "rock") {

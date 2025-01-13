@@ -11,20 +11,26 @@ function getComputerChoice() {
   };
 }
 
+getComputerChoice();
+
+console.log("The computer picked " + getComputerChoice() + "!");
+
 getHumanChoice();
 
 function getHumanChoice() {
-  let humanPick = window.prompt("What's your pick?");
-  if (humanPick.toLowerCase() === "rock") {
-    return "You picked " + humanPick.toLowerCase();
-  } else if (humanPick.toLowerCase() === "paper") {
-    return "You picked " + humanPick.toLowerCase();
-  } else if (humanPick.toLowerCase() === "scissors")  {
-    return "You picked " + humanPick.toLowerCase();
+  let humanPick = window.prompt("What's your pick?").toLowerCase();
+  if (humanPick === "rock") {
+    return humanPick;
+  } else if (humanPick === "paper") {
+    return humanPick;
+  } else if (humanPick === "scissors")  {
+    return humanPick;
   } else {
     return "Please enter a valid choice";
   };
 }
+
+console.log("You picked " + getHumanChoice() + "!");
 
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === "rock" && computerChoice === "paper") {
@@ -44,11 +50,14 @@ function playRound(humanChoice, computerChoice) {
     return "You lose! Rock beats Scissors!";
   } else if (humanChoice === "rock" && computerChoice === "scissors") {
     humanScore++;
-    return "You win! ROck beats Scissors!";
+    return "You win! Rock beats Scissors!";
   } else {
     return "Draw! No points awarded";
   }
 }
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
 
 
 

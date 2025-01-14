@@ -26,15 +26,19 @@ function getHumanChoice() {
   return humanPick;
 }
 
-let humanScore = 0;
-let computerScore = 0;
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
 
-function playRound(humanChoice, computerChoice) {
+function playGame() {
+  let humanScore = 0;
+  let computerScore = 0;
+
+  function playRound(humanChoice, computerChoice) {
   if (humanChoice === "rock" && computerChoice === "paper") {
     computerScore++;
     console.log("You lose! Paper beats Rock!");
   } else if (humanChoice === "paper" && computerChoice === "rock") {
-    humanScore++;
+     humanScore++;
     console.log("You win! Paper beats rock!");
   } else if (humanChoice === "paper" && computerChoice === "scissors") {
     computerScore++;
@@ -52,10 +56,32 @@ function playRound(humanChoice, computerChoice) {
     console.log("Draw! No points awarded");
   } else {
     console.log("Human did not input valid choice! No points awarded!")
+  } 
+  } 
+  
+  while (humanScore !== 5 && computerScore !== 5) {
+
+playRound(humanSelection, computerSelection);
+
+console.log("Human Score: " + humanScore);
+
+console.log("Computer Score: " + computerScore);
+
+humanSelection = getHumanChoice();
+
+computerSelection = getComputerChoice();
+
+} 
+  
+  if (humanScore === 5) {
+
+    console.log("You win the game!"); 
+  }
+
+  if (computerScore === 5) {
+   
+    console.log("You lose the game!");
   }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
+playGame();

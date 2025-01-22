@@ -35,43 +35,32 @@ function playGame() {
 
   function playRound(humanChoice, computerChoice) {
   if (humanChoice === "rock" && computerChoice === "paper") {
-    ++computerScore;
     console.log("You lose! Paper beats Rock!");
   } else if (humanChoice === "paper" && computerChoice === "rock") {
-    ++humanScore;
     console.log("You win! Paper beats rock!");
   } else if (humanChoice === "paper" && computerChoice === "scissors") {
-    ++computerScore;
     console.log("You lose! Scissors beats Paper!");
   } else if (humanChoice === "scissors" && computerChoice === "paper") {
-    ++humanScore;
     console.log("You win! Scissors beats Paper!");
   } else if (humanChoice === "scissors" && computerChoice === "rock") {
-    ++computerScore;
     console.log("You lose! Rock beats Scissors!");
   } else if (humanChoice === "rock" && computerChoice === "scissors") {
-    ++humanScore;
     console.log("You win! Rock beats Scissors!");
   } else if (humanChoice === computerChoice) {
     console.log("Draw! No points awarded");
   } else {
     console.log("Human did not input valid choice! No points awarded!")
   } 
-  } 
-  
-  while (humanScore < 5 && computerScore < 5) {
-    playRound(humanSelection, computerSelection);
-    humanSelection = getHumanChoice();
-    computerSelection = getComputerChoice();
-  } 
-  
-  if (humanScore === 5) {
-    console.log("You win the game!"); 
-  }
 
-  if (computerScore === 5) {
-    console.log("You lose the game!");
-  }
+ }
+   playRound(humanSelection, computerSelection);
+   
+  
+
 }
+
+ 
+
+
 
 playGame();

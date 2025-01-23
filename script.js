@@ -35,32 +35,48 @@ function playGame() {
 
   function playRound(humanChoice, computerChoice) {
   if (humanChoice === "rock" && computerChoice === "paper") {
-    console.log("You lose! Paper beats Rock!");
+    console.log("You lose this round! Paper beats Rock!");
+    computerScore++;
   } else if (humanChoice === "paper" && computerChoice === "rock") {
-    console.log("You win! Paper beats rock!");
+    console.log("You win this round! Paper beats rock!");
+    humanScore++;
   } else if (humanChoice === "paper" && computerChoice === "scissors") {
-    console.log("You lose! Scissors beats Paper!");
+    console.log("You lose this round! Scissors beats Paper!");
+    computerScore++;
   } else if (humanChoice === "scissors" && computerChoice === "paper") {
-    console.log("You win! Scissors beats Paper!");
+    console.log("You win this round! Scissors beats Paper!");
+    humanScore++;
   } else if (humanChoice === "scissors" && computerChoice === "rock") {
-    console.log("You lose! Rock beats Scissors!");
+    console.log("You lose this round! Rock beats Scissors!");
+    computerScore++;
   } else if (humanChoice === "rock" && computerChoice === "scissors") {
-    console.log("You win! Rock beats Scissors!");
+    console.log("You win this round! Rock beats Scissors!");
+    humanScore++;
   } else if (humanChoice === computerChoice) {
     console.log("Draw! No points awarded");
   } else {
     console.log("Human did not input valid choice! No points awarded!")
-  } 
+  }  
 
  }
-   playRound(humanSelection, computerSelection);
-   
+
+  for (let i = 0; i < 4; i++){
+    playRound(humanSelection, computerSelection);
+    humanSelection = getHumanChoice();
+    computerSelection = getComputerChoice();
+  }
   
+  playRound(humanSelection, computerSelection)
+
+  if (computerScore > humanScore) {
+    console.log("You lose the game!");
+  } else if (humanScore > computerScore) {
+    console.log("You win the game!");
+  } else {
+    console.log("Tie game!");
+  }
 
 }
 
- 
-
-
-
 playGame();
+

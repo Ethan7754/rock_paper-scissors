@@ -1,11 +1,42 @@
+const buttonContainer = document.createElement("div");
+buttonContainer.style.backgroundColor = "pink";
+buttonContainer.style.margin = "0 auto";
+buttonContainer.style.width = "50%";
+buttonContainer.style.height = "400px";
+buttonContainer.style.border = "2px solid black";
+buttonContainer.style.display = "flex";
+buttonContainer.style.justifyContent = "space-around";
+buttonContainer.style.alignItems = "center"
+document.body.prepend(buttonContainer);
+
 const rockButton = document.createElement("button");
-rockButton.addEventListener("click", playRound(humanSelection, computerSelection));
+rockButton.addEventListener("click", playGame);
+rockButton.style.backgroundColor = "lightBlue";
+rockButton.style.width = "200px";
+rockButton.style.height = "100px";
+rockButton.textContent = "rock";
+buttonContainer.appendChild(rockButton);
+
 const paperButton = document.createElement("button");
-paperButton.addEventListener("click", playRound(humanSelection, computerSelection));
+paperButton.addEventListener("click", playGame);
+paperButton.style.backgroundColor = "lightBlue";
+paperButton.style.width = "200px";
+paperButton.style.height = "100px";
+paperButton.textContent = "paper";
+
+buttonContainer.appendChild(paperButton);
+
 const scissorsButton = document.createElement("button");
-scissorsButton.addEventListener("click", playRound(humanSelection, computerSelection));
+scissorsButton.addEventListener("click", playGame);
+scissorsButton.style.backgroundColor = "lightBlue";
+scissorsButton.style.width = "200px";
+scissorsButton.style.height = "100px";
+scissorsButton.textContent = "scissors";
+buttonContainer.appendChild(scissorsButton);
 
 
+const resultsDiv = document.createElement("div");
+document.body.appendChild(resultsDiv);
 
 
 
@@ -20,7 +51,7 @@ function getComputerChoice() {
     console.log("The computer chose rock!");
     return "rock";
   } else if (randomNum === 1) {
-    console.log("The computer chose paper!");
+    console.log ("The computer chose paper!");
     return "paper";
   } else {
     console.log("The computer chose scissors!");
@@ -29,15 +60,14 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-  let humanPick = window.prompt("What's your pick?").toLowerCase();
   if (humanPick === "rock") {
-    console.log("You chose " + humanPick + "!");
+    resultsDiv.textContent = "You chose " + humanPick + "!";
   } else if (humanPick === "paper") {
-    console.log("You chose " + humanPick + "!");
+    resultsDiv.textContent = "You chose " + humanPick + "!";
   } else if (humanPick === "scissors") {
-    console.log("You chose " + humanPick + "!");
+    resultsDiv.textContent = "You chose " + humanPick + "!";
   } else {
-    console.log("Please enter a valid choice");
+    resultsDiv.textContent = "Please enter a valid choice";
   }
   return humanPick;
 }

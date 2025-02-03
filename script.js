@@ -1,3 +1,19 @@
+const rockButton = document.createElement("button");
+rockButton.addEventListener("click", playRound(humanSelection, computerSelection));
+const paperButton = document.createElement("button");
+paperButton.addEventListener("click", playRound(humanSelection, computerSelection));
+const scissorsButton = document.createElement("button");
+scissorsButton.addEventListener("click", playRound(humanSelection, computerSelection));
+
+
+
+
+
+
+
+
+
+
 function getComputerChoice() {
   let randomNum = Math.floor(Math.random() * 3);
   if (randomNum === 0) {
@@ -58,7 +74,7 @@ function playGame() {
     console.log("Human did not input valid choice! No points awarded!")
   } 
   } 
-  
+   playRound(humanSelection, computerSelection);
 }
 
 playGame();

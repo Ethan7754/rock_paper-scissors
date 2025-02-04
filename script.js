@@ -10,7 +10,7 @@ buttonContainer.style.alignItems = "center"
 document.body.prepend(buttonContainer);
 
 const rockButton = document.createElement("button");
-rockButton.addEventListener("click", playGame);
+rockButton.addEventListener("click", playRound);
 rockButton.style.backgroundColor = "lightBlue";
 rockButton.style.width = "200px";
 rockButton.style.height = "100px";
@@ -18,7 +18,7 @@ rockButton.textContent = "rock";
 buttonContainer.appendChild(rockButton);
 
 const paperButton = document.createElement("button");
-paperButton.addEventListener("click", playGame);
+paperButton.addEventListener("click", playRound);
 paperButton.style.backgroundColor = "lightBlue";
 paperButton.style.width = "200px";
 paperButton.style.height = "100px";
@@ -27,7 +27,7 @@ paperButton.textContent = "paper";
 buttonContainer.appendChild(paperButton);
 
 const scissorsButton = document.createElement("button");
-scissorsButton.addEventListener("click", playGame);
+scissorsButton.addEventListener("click", playRound);
 scissorsButton.style.backgroundColor = "lightBlue";
 scissorsButton.style.width = "200px";
 scissorsButton.style.height = "100px";
@@ -59,52 +59,47 @@ function getComputerChoice() {
   }
 }
 
-function getHumanChoice() {
-  if (humanPick === "rock") {
+function getHumanChoice(choice) {
+  if (choice === "rock") {
+    resultsDiv.textContent = "You chose rock!";
+  } else if (paperButton.clicked === true) {
     resultsDiv.textContent = "You chose " + humanPick + "!";
-  } else if (humanPick === "paper") {
+  } else if (scissorsButton.clicked === true) {
     resultsDiv.textContent = "You chose " + humanPick + "!";
-  } else if (humanPick === "scissors") {
-    resultsDiv.textContent = "You chose " + humanPick + "!";
-  } else {
-    resultsDiv.textContent = "Please enter a valid choice";
-  }
-  return humanPick;
+  } 
 }
 
 let humanSelection = getHumanChoice();
 let computerSelection = getComputerChoice();
 
-function playGame() {
-  let humanScore = 0;
-  let computerScore = 0;
+
 
   function playRound(humanChoice, computerChoice) {
   if (humanChoice === "rock" && computerChoice === "paper") {
     ++computerScore;
-    console.log("You lose! Paper beats Rock!");
+    resultsDiv.textContent = "You lose! Paper beats Rock!";
   } else if (humanChoice === "paper" && computerChoice === "rock") {
     ++humanScore;
-    console.log("You win! Paper beats rock!");
+    resultsDiv.textContent = "You win! Paper beats rock!";
   } else if (humanChoice === "paper" && computerChoice === "scissors") {
     ++computerScore;
-    console.log("You lose! Scissors beats Paper!");
+    resultsDiv.textContent = "You lose! Scissors beats Paper!";
   } else if (humanChoice === "scissors" && computerChoice === "paper") {
     ++humanScore;
-    console.log("You win! Scissors beats Paper!");
+    resultsDiv.textContent = "You win! Scissors beats Paper!";
   } else if (humanChoice === "scissors" && computerChoice === "rock") {
     ++computerScore;
-    console.log("You lose! Rock beats Scissors!");
+    resultsDiv.textContent = "You lose! Rock beats Scissors!";
   } else if (humanChoice === "rock" && computerChoice === "scissors") {
     ++humanScore;
-    console.log("You win! Rock beats Scissors!");
+    resultsDiv.textContent = "You win! Rock beats Scissors!";
   } else if (humanChoice === computerChoice) {
-    console.log("Draw! No points awarded");
+    resultsDiv.textContent = "Draw! No points awarded";
   } else {
-    console.log("Human did not input valid choice! No points awarded!")
+    resultsDiv.textContent = "Human did not input valid choice! No points awarded!";
   } 
-  } 
-   playRound(humanSelection, computerSelection);
-}
 
-playGame();
+} 
+  
+
+

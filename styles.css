@@ -23,12 +23,28 @@
 .btn {
   background-color: white;
   border: 1px solid white;
+  width: 150px;
+  height: 150px;
 }
 
-img {
-  width: 100px;
-  height: 100px;
 
+#rock {
+  background-image: url("rock.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#paper {
+  background-image: url("paper.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#scissors {
+  background-image: url("scissors.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 #results-div {

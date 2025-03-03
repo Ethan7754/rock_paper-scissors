@@ -25,8 +25,8 @@ function getHumanChoice(choice) {
   return choice;
 }
 
-let playerScore;
-let computerScore;
+let playerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3);
@@ -42,6 +42,15 @@ function getComputerChoice() {
   };
 }
 
+function playGame() {
+  if (playerScore === 5) {
+    gameResultContainer.innerText = "You win the game!";
+  } else if (computerScore === 5) {
+    gameResultContainer.innerText = "You lose the game!"; 
+  }
+}
+
+
 function playRound(humanChoice, computerChoice) {
   if (humanChoice.toLowerCase() === computerChoice) {
     gameResultContainer.innerText = "Draw! No points awarded!"
@@ -54,5 +63,6 @@ function playRound(humanChoice, computerChoice) {
   } else {
     gameResultContainer.innerText = "no";
   }
+  playGame();
 }
 

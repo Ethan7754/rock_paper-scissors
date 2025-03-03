@@ -1,0 +1,45 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#button-container {
+  border: 2px solid black;
+  width: 500px;
+  height: 200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  height: 100px;
+  width: 100px;
+  border-radius: 20px;
+}
+
+#results-div {
+  border: 2px solid black;
+  width: 500px;
+  height: 200px;
+  margin: 20px auto 0 auto;
+  display: flex;
+}
+
+#human-result {
+  border: 1px solid black;
+  flex: 1;
+}
+
+#round-and-game-result {
+  border: 1px solid black;
+  flex: 2;
+}
+
+#computer-result {
+  border: 1px solid black;
+  flex: 1;
+}

@@ -23,12 +23,10 @@ const humanResultContainer = document.getElementById("human-result");
 const gameResultContainer = document.getElementById("round-and-game-result");
 const computerResultContainer = document.getElementById("computer-result");
 
-const playAgainYesButton = document.createElement("button");
-playAgainYesButton.innerText = "Yes";
-playAgainYesButton.addEventListener("click", reset);
+const playAgainButton = document.createElement("button");
+playAgainButton.innerText = "Play Again";
+playAgainButton.addEventListener("click", reset);
 
-const playAgainNoButton = document.createElement("button");
-playAgainNoButton.innerText = "No";
 
 function getHumanChoice(choice) {
   humanResultContainer.textContent = `You picked ${choice}`;
@@ -41,13 +39,13 @@ let computerScore = 0;
 function getComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3);
   if (randomNumber === 0) {
-    computerResultContainer.innerText = "Computer picked rock";
+    computerResultContainer.innerHTML = "Computer picked rock";
     return "rock";
   } else if (randomNumber === 1) {
-    computerResultContainer.innerText = "Computer picked paper";
+    computerResultContainer.innerHTML = "Computer picked paper";
     return "paper";
   } else if (randomNumber === 2) {
-    computerResultContainer.innerText = "Computer picked scissors";
+    computerResultContainer.innerHTML = "Computer picked scissors";
     return "scissors";
   };
 }
@@ -55,14 +53,10 @@ function getComputerChoice() {
 function playGame() {
   if (playerScore === 5) {
     gameResultContainer.innerText += "\n You win the game!";
-    gameResultContainer.innerText += "\n \n \n Play again?";
-    gameResultContainer.appendChild(playAgainYesButton);
-    gameResultContainer.appendChild(playAgainNoButton);
+    gameResultContainer.appendChild(playAgainButton);
   } else if (computerScore === 5) {
     gameResultContainer.innerText += "\n You lose the game!"; 
-    gameResultContainer.innerText += "\n \n \n Play again?";
-    gameResultContainer.appendChild(playAgainYesButton);
-    gameResultContainer.appendChild(playAgainNoButton);
+    gameResultContainer.appendChild(playAgainButton);
   }
 }
 
@@ -70,18 +64,18 @@ function playGame() {
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     gameResultContainer.innerText = "Draw! No points awarded!"
-    humanResultContainer.innerText += `\n Human Score: ${playerScore}`;
-    computerResultContainer.innerText += `\n Computer Score: ${computerScore} `;
+    humanResultContainer.innerHTML += `<p class="score-style">Human Score: ${playerScore}</p>`;
+    computerResultContainer.innerHTML += `<p class="score-style">Computer Score: ${computerScore}</p>`;
   } else if (humanChoice === "rock" && computerChoice === "scissors" || humanChoice === "paper" && computerChoice === "rock" || humanChoice === "scissors" && computerChoice === "paper") {
     playerScore++;
     gameResultContainer.innerText = `You win this round! ${humanChoice} beats ${computerChoice}`;
-    humanResultContainer.innerText += `\n Human Score: ${playerScore}`;
-    computerResultContainer.innerText += `\n Computer Score: ${computerScore} `;
+   humanResultContainer.innerHTML += `<p class="score-style">Human Score: ${playerScore}</p>`;
+    computerResultContainer.innerHTML += `<p class="score-style">Computer Score: ${computerScore}</p>`;
   } else if (humanChoice === "scissors" && computerChoice === "rock" || humanChoice === "rock" && computerChoice === "paper" || humanChoice === "paper" && computerChoice === "scissors") {
     computerScore++;
     gameResultContainer.innerText = `You lose this round! ${computerChoice} beats ${humanChoice}`;
-    humanResultContainer.innerText += `/n Human Score: ${playerScore}`;
-    computerResultContainer.innerText += `/n Computer Score: ${computerScore} `;
+    humanResultContainer.innerHTML += `<p class="score-style">Human Score: ${playerScore}</p>`;
+    computerResultContainer.innerHTML += `<p class="score-style">Computer Score: ${computerScore}</p>`;
   } else {
     gameResultContainer.innerText = "no";
   }

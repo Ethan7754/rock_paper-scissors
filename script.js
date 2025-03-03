@@ -1,20 +1,20 @@
 const rockButton = document.getElementById("rock");
 rockButton.addEventListener("click", (e) => {
-  let human = getHumanChoice(e.target.innerText);
+  let human = getHumanChoice(e.target.id);
   let comp = getComputerChoice();
   playRound(human, comp);
 });
 
 const paperButton = document.getElementById("paper");
 paperButton.addEventListener("click", (e) => {
-  let human = getHumanChoice(e.target.innerText);
+  let human = getHumanChoice(e.target.id);
   let comp = getComputerChoice();
   playRound(human, comp);
 });
 
 const scissorsButton = document.getElementById("scissors");
 scissorsButton.addEventListener("click", (e) => {
- let human = getHumanChoice(e.target.innerText);
+ let human = getHumanChoice(e.target.id);
  let comp = getComputerChoice();
  playRound(human, comp);
 });
@@ -68,16 +68,16 @@ function playGame() {
 
 
 function playRound(humanChoice, computerChoice) {
-  if (humanChoice.toLowerCase() === computerChoice) {
+  if (humanChoice === computerChoice) {
     gameResultContainer.innerText = "Draw! No points awarded!"
     humanResultContainer.innerText += `\n Human Score: ${playerScore}`;
     computerResultContainer.innerText += `\n Computer Score: ${computerScore} `;
-  } else if (humanChoice === "Rock" && computerChoice === "scissors" || humanChoice === "Paper" && computerChoice === "rock" || humanChoice === "Scissors" && computerChoice === "paper") {
+  } else if (humanChoice === "rock" && computerChoice === "scissors" || humanChoice === "paper" && computerChoice === "rock" || humanChoice === "scissors" && computerChoice === "paper") {
     playerScore++;
     gameResultContainer.innerText = `You win this round! ${humanChoice} beats ${computerChoice}`;
     humanResultContainer.innerText += `\n Human Score: ${playerScore}`;
     computerResultContainer.innerText += `\n Computer Score: ${computerScore} `;
-  } else if (humanChoice === "Scissors" && computerChoice === "rock" || humanChoice === "Rock" && computerChoice === "paper" || humanChoice === "Paper" && computerChoice === "scissors") {
+  } else if (humanChoice === "scissors" && computerChoice === "rock" || humanChoice === "rock" && computerChoice === "paper" || humanChoice === "paper" && computerChoice === "scissors") {
     computerScore++;
     gameResultContainer.innerText = `You lose this round! ${computerChoice} beats ${humanChoice}`;
     humanResultContainer.innerText += `/n Human Score: ${playerScore}`;

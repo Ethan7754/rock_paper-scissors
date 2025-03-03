@@ -29,7 +29,6 @@ playAgainYesButton.addEventListener("click", reset);
 
 const playAgainNoButton = document.createElement("button");
 playAgainNoButton.innerText = "No";
-playAgainNoButton.addEventListener("click", reset);
 
 function getHumanChoice(choice) {
   humanResultContainer.textContent = `You picked ${choice}`;
@@ -90,5 +89,9 @@ function playRound(humanChoice, computerChoice) {
 }
 
 function reset() {
-  
+  playerScore = 0;
+  computerScore = 0;
+  gameResultContainer.innerText = "";
+  humanResultContainer.innerText = "";
+  computerResultContainer.innerText = "";
 }

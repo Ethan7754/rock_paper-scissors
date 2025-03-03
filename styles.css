@@ -11,8 +11,8 @@
 
 #button-container {
   border: 2px solid black;
-  width: 500px;
-  height: 200px;
+  width: 600px;
+  height: 300px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -27,6 +27,9 @@
   height: 150px;
 }
 
+.btn:hover {
+  background-color: lightgray;
+}
 
 #rock {
   background-image: url("rock.png");

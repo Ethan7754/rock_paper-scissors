@@ -1,86 +1,53 @@
-const rockButton = document.getElementById("rock");
-rockButton.addEventListener("click", (e) => {
-  let human = getHumanChoice(e.target.id);
-  let comp = getComputerChoice();
-  playRound(human, comp);
-});
-
-const paperButton = document.getElementById("paper");
-paperButton.addEventListener("click", (e) => {
-  let human = getHumanChoice(e.target.id);
-  let comp = getComputerChoice();
-  playRound(human, comp);
-});
-
-const scissorsButton = document.getElementById("scissors");
-scissorsButton.addEventListener("click", (e) => {
- let human = getHumanChoice(e.target.id);
- let comp = getComputerChoice();
- playRound(human, comp);
-});
-
+const buttonContainer = document.getElementById("button-container");
 const humanResultContainer = document.getElementById("human-result");
 const gameResultContainer = document.getElementById("round-and-game-result");
 const computerResultContainer = document.getElementById("computer-result");
 
-const playAgainButton = document.createElement("button");
-playAgainButton.innerText = "Play Again";
-playAgainButton.addEventListener("click", reset);
-
-
 function getHumanChoice(choice) {
-  humanResultContainer.textContent = `You picked ${choice}`;
+  humanResultContainer.innerHTML = `<p class="pick-style">You picked ${choice}</p>`;
   return choice;
 }
-
-let playerScore = 0;
-let computerScore = 0;
 
 function getComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3);
   if (randomNumber === 0) {
-    computerResultContainer.innerHTML = "Computer picked rock";
+    computerResultContainer.innerHTML = `<p class="pick-style">Computer picked rock</p>`;
     return "rock";
   } else if (randomNumber === 1) {
-    computerResultContainer.innerHTML = "Computer picked paper";
+    computerResultContainer.innerHTML = `<p class="pick-style">Computer picked paper</p>`;
     return "paper";
   } else if (randomNumber === 2) {
-    computerResultContainer.innerHTML = "Computer picked scissors";
+    computerResultContainer.innerHTML = `<p class="pick-style">Computer picked scissors</p>`;
     return "scissors";
   };
 }
 
-function playGame() {
-  if (playerScore === 5) {
-    gameResultContainer.innerText += "\n You win the game!";
-    gameResultContainer.appendChild(playAgainButton);
-  } else if (computerScore === 5) {
-    gameResultContainer.innerText += "\n You lose the game!"; 
-    gameResultContainer.appendChild(playAgainButton);
-  }
-}
+const rockButton = document.getElementById("rock");
 
+rockButton.addEventListener("click", (e) => {
+  let humanSelection = getHumanChoice(e.target.id);
+  let computerSelection = getComputerChoice();
+  playRound(humanSelection, computerSelection);
+});
 
-function playRound(humanChoice, computerChoice) {
-  if (humanChoice === computerChoice) {
-    gameResultContainer.innerText = "Draw! No points awarded!"
-    humanResultContainer.innerHTML += `<p class="score-style">Human Score: ${playerScore}</p>`;
-    computerResultContainer.innerHTML += `<p class="score-style">Computer Score: ${computerScore}</p>`;
-  } else if (humanChoice === "rock" && computerChoice === "scissors" || humanChoice === "paper" && computerChoice === "rock" || humanChoice === "scissors" && computerChoice === "paper") {
-    playerScore++;
-    gameResultContainer.innerText = `You win this round! ${humanChoice} beats ${computerChoice}`;
-   humanResultContainer.innerHTML += `<p class="score-style">Human Score: ${playerScore}</p>`;
-    computerResultContainer.innerHTML += `<p class="score-style">Computer Score: ${computerScore}</p>`;
-  } else if (humanChoice === "scissors" && computerChoice === "rock" || humanChoice === "rock" && computerChoice === "paper" || humanChoice === "paper" && computerChoice === "scissors") {
-    computerScore++;
-    gameResultContainer.innerText = `You lose this round! ${computerChoice} beats ${humanChoice}`;
-    humanResultContainer.innerHTML += `<p class="score-style">Human Score: ${playerScore}</p>`;
-    computerResultContainer.innerHTML += `<p class="score-style">Computer Score: ${computerScore}</p>`;
-  } else {
-    gameResultContainer.innerText = "no";
-  }
-  playGame();
-}
+const paperButton = document.getElementById("paper");
+
+paperButton.addEventListener("click", (e) => {
+  let humanSelection = getHumanChoice(e.target.id);
+  let computerSelection = getComputerChoice();
+  playRound(humanSelection, computerSelection);
+});
+
+const scissorsButton = document.getElementById("scissors");
+
+scissorsButton.addEventListener("click", (e) => {
+ let humanSelection = getHumanChoice(e.target.id);
+ let computerSelection = getComputerChoice();
+ playRound(humanSelection, computerSelection);
+});
+
+let playerScore = 0;
+let computerScore = 0;
 
 function reset() {
   playerScore = 0;
@@ -88,4 +55,69 @@ function reset() {
   gameResultContainer.innerText = "";
   humanResultContainer.innerText = "";
   computerResultContainer.innerText = "";
+  buttonContainer.innerHTML = `
+      <button class="btn" id="rock"></button>
+      <button class="btn"id="paper"></button>
+      <button class="btn" id="scissors"></button>`;
+  const rockButton = document.getElementById("rock");
+  rockButton.addEventListener("click", (e) => {
+    let humanSelection = getHumanChoice(e.target.id);
+    let computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+  });
+  const paperButton = document.getElementById("paper");
+  paperButton.addEventListener("click", (e) => {
+    let humanSelection = getHumanChoice(e.target.id);
+    let computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+  });
+  const scissorsButton = document.getElementById("scissors");
+  scissorsButton.addEventListener("click", (e) => {
+    let humanSelection = getHumanChoice(e.target.id);
+    let computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+  });
+}
+
+const playAgainButton = document.createElement("button");
+playAgainButton.innerText = "Play Again";
+playAgainButton.addEventListener("click", reset);
+
+function playGame() {
+  if (playerScore === 5) {
+    rockButton.style.display = "none";
+    paperButton.style.display = "none";
+    scissorsButton.style.display = "none";
+    buttonContainer.innerHTML = `<p class="win-style">:)</p>`;
+    gameResultContainer.innerHTML = "";
+    gameResultContainer.innerHTML += `<p class="win-style">You win the game!</p>`;
+    gameResultContainer.appendChild(playAgainButton);
+  } else if (computerScore === 5) {
+    rockButton.style.display = "none";
+    paperButton.style.display = "none";
+    scissorsButton.style.display = "none";
+    buttonContainer.innerHTML = `<p class="lose-style">:(</p>`;
+    gameResultContainer.innerHTML = "";
+    gameResultContainer.innerHTML += `<p class="lose-style"> You lose the game!</p>`; 
+    gameResultContainer.appendChild(playAgainButton);
+  }
+}
+
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice === computerChoice) {
+    gameResultContainer.innerHTML = `<p class="round-result-style">Draw! No points awarded!</p>`;
+    humanResultContainer.innerHTML += `<p class="score-style">Human Score: ${playerScore}</p>`;
+    computerResultContainer.innerHTML += `<p class="score-style">Computer Score: ${computerScore}</p>`;
+  } else if (humanChoice === "rock" && computerChoice === "scissors" || humanChoice === "paper" && computerChoice === "rock" || humanChoice === "scissors" && computerChoice === "paper") {
+    playerScore++;
+    gameResultContainer.innerHTML = `<p class="round-result-style">You win this round! ${humanChoice} beats ${computerChoice}</p>`;
+    humanResultContainer.innerHTML += `<p class="score-style">Human Score: ${playerScore}</p>`;
+    computerResultContainer.innerHTML += `<p class="score-style">Computer Score: ${computerScore}</p>`;
+  } else if (humanChoice === "scissors" && computerChoice === "rock" || humanChoice === "rock" && computerChoice === "paper" || humanChoice === "paper" && computerChoice === "scissors") {
+    computerScore++;
+    gameResultContainer.innerHTML = `<p class="round-result-style">You lose this round! ${computerChoice} beats ${humanChoice}</p>`;
+    humanResultContainer.innerHTML += `<p class="score-style">Your Score: ${playerScore}</p>`;
+    computerResultContainer.innerHTML += `<p class="score-style">Computer Score: ${computerScore}</p>`;
+  } 
+  playGame();
 }

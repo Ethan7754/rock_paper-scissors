@@ -40,20 +40,20 @@
 }
 
 #rock {
-  background-image: url("rock.png");
+  background-image: url("clip_art/rock.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 #paper {
-  background-image: url("paper.png");
+  background-image: url("clip_art/paper.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 #scissors {
-  background-image: url("scissors.png");
+  background-image: url("clip_art/scissors.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -63,7 +63,7 @@
   width: 800px;
   height: 300px;
   margin: 20px auto 0 auto;
-  display: flex;
+  display: flex; 
 }
 
 #human-result {
@@ -117,3 +117,11 @@
   font-size: 50px;
   color: red;
 } 
+
+#play-again-button {
+  width: 187.5px;
+  height: 45px;
+  margin: 0 auto;
+  font-size: 25px;
+  margin-bottom: 10px;
+}

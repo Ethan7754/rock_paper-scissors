@@ -81,6 +81,7 @@ function reset() {
 
 const playAgainButton = document.createElement("button");
 playAgainButton.innerText = "Play Again";
+playAgainButton.setAttribute("id", "play-again-button");
 playAgainButton.addEventListener("click", reset);
 
 function playGame() {
